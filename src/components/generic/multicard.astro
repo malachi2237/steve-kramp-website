@@ -1,0 +1,8 @@
+---
+const { gap, elementMinSize, class: className } = Astro.props;
+const gridGap = gap || "gap-4"
+---
+
+<div style={`grid-template-columns: repeat(auto-fit,minmax(min(${elementMinSize || "20rem"},100%),1fr));`} class:list={[`grid ${gridGap} my-16`, className]}>
+    <slot />
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "steve-kramp-website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/preact": "^4.1.0",
+    "@fontsource/bona-nova-sc": "^5.2.7",
+    "@fontsource/farro": "^5.2.7",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.11.0",
+    "preact": "^10.26.9",
+    "tailwindcss": "^4.1.7"
+  }
+}

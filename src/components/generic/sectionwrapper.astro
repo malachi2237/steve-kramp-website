@@ -1,0 +1,6 @@
+---
+const {maxWidth, class: className} = Astro.props;
+---
+<div class:list={["relative w-full lg:mx-auto lg:px-0 md:px-16 px-4 py-12 h-fit", maxWidth || "lg:w-17/20", className]}>
+    <slot />
+</div>

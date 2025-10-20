@@ -1,0 +1,16 @@
+---
+import { Picture } from "astro:assets";
+const { src, alt, loading, position, zIndex, class: className, ...attrs} = Astro.props;
+---
+
+<Picture
+    src={src}
+    alt={alt || ""}
+    loading={loading || "lazy"}
+    formats={['avif', 'webp', 'png']}
+    class:list={[
+        `absolute ${position || "top-0"} w-full ${zIndex || '-z-1'} object-cover`,
+        className
+    ]},
+    {...attrs}
+/>

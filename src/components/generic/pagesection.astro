@@ -1,0 +1,23 @@
+---
+import SectionWrapper from "./sectionwrapper.astro";
+
+const {
+    id,
+    wrapper,
+    wrapperMaxWidth,
+    class: className,
+    ...attrs
+} = Astro.props;
+---
+
+<section id={id} class={className} {...attrs}>
+    {
+        wrapper && wrapper === "no" ? (
+            <slot />
+        ) : (
+            <SectionWrapper maxWidth={wrapperMaxWidth}>
+                <slot />
+            </SectionWrapper>
+        )
+    }
+</section>

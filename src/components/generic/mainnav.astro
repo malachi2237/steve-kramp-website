@@ -1,0 +1,49 @@
+---
+type WebPage = {
+    [key: string]: string;
+};
+interface Props {
+    pagesWithUrls: WebPage;
+    class?: string;
+}
+
+const { pagesWithUrls, class: className } = Astro.props;
+const currentAppearance = "text-primary-950 hover:text-gray-500";
+const otherAppearance = "text-primary-950 hover:text-gray-500";
+---
+
+<nav class:list={[className, ""]}>
+    <input id="menu-btn" type="checkbox" class="hidden peer z-11" />
+    <label
+        for="menu-btn"
+        class="relative select-none cursor-pointer group h-full lg:hidden px-8 py-4"
+    >
+        <span
+            class="bg-primary-950 relative h-0.5 w-8 block transition-all lg:hidden
+        before:bg-primary-950 before:block before:absolute before:transition-all before:top-2.5 before:h-full before:w-full
+        after:bg-primary-950 after:block after:absolute after:transition-all after:-top-2.5 after:h-full after:w-full
+        group-peer-checked:before:-rotate-45 group-peer-checked:after:rotate-45 group-peer-checked:before:-top-0 group-peer-checked:after:top-0
+        group-peer-checked:bg-transparent"
+        ></span></label
+    >
+    <ul
+        class="flex lg:flex-row flex-col lg:justify-start lg:items-center gap-4 lg:gap-16 lg:h-full lg:bg-transparent lg:static absolute top-0 left-0 lg:w-fit w-screen bg-gray-50 h-0 mt-20 lg:m-0 peer-checked:h-fit overflow-hidden transition-all"
+    >
+        {
+            Object.entries(pagesWithUrls).map(([name, url]) => (
+                <li>
+                    <a
+                        href={url}
+                        class={
+                            (url === Astro.url.pathname
+                                ? currentAppearance
+                                : otherAppearance) + " block font-sans text-xl text-center"
+                        }
+                    >
+                        {name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
