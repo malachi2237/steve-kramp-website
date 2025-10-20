@@ -1,0 +1,17 @@
+---
+import PageLayout from "../layouts/pagelayout.astro";
+import PageSection from "../components/generic/pagesection.astro";
+import BackgroundImage from "../components/generic/backgroundimage.astro";
+
+import heroImage from "../images/gentle-ocean-waves-breaking.jpg"
+---
+
+<PageLayout>
+    <PageSection
+        id="#"
+        class="h-128"
+        wrapper="no"
+        >
+        <BackgroundImage src={heroImage} loading="eager"/>
+    </PageSection>
+</PageLayout>

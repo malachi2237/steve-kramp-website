@@ -1,14 +1,14 @@
 ---
 import MainNav from "./mainnav.astro";
-const { Logo, pagesWithUrls } = Astro.props;
+const { pagesWithUrls } = Astro.props;
 ---
 
 <header
     class="fixed lg:absolute top-0 z-10 flex flex-row justify-between items-center w-full h-20 bg-white lg:bg-transparent px-8 py-2"
 >
-    <div class="flex flex-row justify-between items-center gap-12 w-full lg:w-fit h-full">
-        <Logo class="h-full" />
+    <div class="flex flex-row justify-between items-center gap-12 w-full lg:w-fit h-full text-tertiary-900">
+        <slot name="logo"/>
         <MainNav pagesWithUrls={pagesWithUrls}/>
     </div>
-    <slot />
+    <slot name="cta"/>
 </header>

@@ -1,6 +1,12 @@
 ---
 import { Picture } from "astro:assets";
 const { src, alt, loading, position, zIndex, class: className, ...attrs} = Astro.props;
+
+let widthArray: Array<Number> = []
+
+for (let i = 100; i <= 2000; i+=100) {
+    widthArray.push(i)
+}
 ---
 
 <Picture
@@ -8,6 +14,7 @@ const { src, alt, loading, position, zIndex, class: className, ...attrs} = Astro
     alt={alt || ""}
     loading={loading || "lazy"}
     formats={['avif', 'webp', 'png']}
+    widths={widthArray}
     class:list={[
         `absolute ${position || "top-0"} w-full ${zIndex || '-z-1'} object-cover`,
         className
