@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { pagesWithUrls, class: className } = Astro.props;
-const currentAppearance = "text-primary-950 hover:text-gray-500";
+const currentAppearance = "text-primary-950 after:w-full after:h-0.5 after:block after:bg-tertiary-950";
 const otherAppearance = "text-primary-950 hover:text-gray-500";
 ---
 
@@ -16,7 +16,7 @@ const otherAppearance = "text-primary-950 hover:text-gray-500";
     <input id="menu-btn" type="checkbox" class="hidden peer z-11" />
     <label
         for="menu-btn"
-        class="relative select-none cursor-pointer group h-full lg:hidden px-8 py-4"
+        class="relative select-none cursor-pointer group h-full lg:hidden"
     >
         <span
             class="bg-primary-950 relative h-0.5 w-8 block transition-all lg:hidden

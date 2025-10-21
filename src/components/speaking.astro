@@ -1,0 +1,38 @@
+---
+import PageSection from "./generic/pagesection.astro";
+import SectionWrapper from "./generic/sectionwrapper.astro";
+import speakingImage from "../images/steve-kramp-public-speaking.jpg";
+import Button from "./generic/button";
+import { Picture } from "astro:assets";
+---
+
+<PageSection id="bio" wrapper="no">
+    <SectionWrapper maxWidth="lg:w-6/8">
+        <div
+            class="flex flex-col md:flex-row justify-center items-center gap-12 w-full"
+        >
+            <div class="flex flex-col gap-3 w-1/2">
+                <h2 class="font-serif text-4xl text-neutral-600">Bio</h2>
+                <p class="font-sans text-base text-neutral-950">
+                    Lorem ipsum nisi consequat proident fugiat elit esse ad
+                    ullamco in et aliqua adipiscing. Exercitation consectetur eu
+                    sunt sit aute irure officia anim aliquip labore ea. Laboris
+                    voluptate occaecat nostrud mollit dolor nulla tempor veniam
+                    sed. Cupidatat dolore non amet.
+                </p>
+                <Button link="/speaking">
+                    Book
+                </Button>
+            </div>
+            <div class="w-1/2">
+            <Picture
+                src={speakingImage}
+                formats={["avif", "webp", "jpg"]}
+                alt="Steve Kramp giving a lecture at a podium"
+                layout="full-width"
+                class=""
+            />
+            </div>
+        </div>
+    </SectionWrapper>
+</PageSection>

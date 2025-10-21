@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 const { src, alt, loading, position, zIndex, class: className, ...attrs} = Astro.props;
 
-let widthArray: Array<Number> = []
+let widthArray: Array<number> = []
 
 for (let i = 100; i <= 2000; i+=100) {
     widthArray.push(i)

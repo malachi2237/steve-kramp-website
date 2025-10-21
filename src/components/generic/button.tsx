@@ -6,7 +6,7 @@ interface ButtonProps {
     class?: string;
 }
 
-const defaultClasses = "bg-primary-600 hover:bg-primary-500 text-white font-sans text-center text-xl py-3 px-8 rounded-3xl my-4";
+const defaultClasses = "bg-primary-500 hover:bg-primary-700 text-neutral-50 font-sans text-center text-base py-3 px-12 rounded-3xl w-fit";
 function Button(props: ButtonProps) {
     return (
         <a href={props.link} className={`${defaultClasses} ${props.class || ""}`}>

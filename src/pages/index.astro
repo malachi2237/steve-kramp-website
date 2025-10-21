@@ -4,6 +4,8 @@ import PageSection from "../components/generic/pagesection.astro";
 import BackgroundImage from "../components/generic/backgroundimage.astro";
 
 import heroImage from "../images/gentle-ocean-waves-breaking.jpg"
+import Bio from "../components/bio.astro";
+import Speaking from "../components/speaking.astro";
 ---
 
 <PageLayout>
@@ -13,5 +15,8 @@ import heroImage from "../images/gentle-ocean-waves-breaking.jpg"
         wrapper="no"
         >
         <BackgroundImage src={heroImage} loading="eager"/>
+        <div class="h-full w-full bg-linear-to-b from-neutral-50/0 to-neutral-50/100"></div>
     </PageSection>
+    <Bio/>
+    <Speaking/>
 </PageLayout>
