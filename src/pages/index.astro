@@ -5,18 +5,13 @@ import BackgroundImage from "../components/generic/backgroundimage.astro";
 
 import heroImage from "../images/gentle-ocean-waves-breaking.jpg"
 import Bio from "../components/bio.astro";
+import Resources from "../components/resources.astro";
 import Speaking from "../components/speaking.astro";
 ---
 
 <PageLayout>
-    <PageSection
-        id="#"
-        class="h-128"
-        wrapper="no"
-        >
-        <BackgroundImage src={heroImage} loading="eager"/>
-        <div class="h-full w-full bg-linear-to-b from-neutral-50/0 to-neutral-50/100"></div>
-    </PageSection>
+    <BackgroundImage src={heroImage} loading="eager" class="mask-b-from-0%"/>
     <Bio/>
+    <Resources/>
     <Speaking/>
 </PageLayout>
