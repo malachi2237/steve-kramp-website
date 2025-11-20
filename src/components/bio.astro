@@ -1,40 +1,27 @@
 ---
 import PageSection from "./generic/pagesection.astro";
-import SectionWrapper from "./generic/sectionwrapper.astro";
-import bioImage from "../images/steve-kramp.jpg";
-import { Picture } from "astro:assets";
+import BioSvg from "../images/vectors/how-pleasant-to-know.svg";
 ---
 
-<PageSection id="bio" wrapper="no">
-    <SectionWrapper
-        maxWidth="lg:w-6/8"
-    >
-        <div 
-        class="flex flex-col md:flex-row justify-center items-center gap-12 w-full">
-            <Picture
-                src={bioImage}
-                formats={["avif", "webp", "jpg"]}
-                alt="Steve Kramp"
-                class="w-full sm:w-96 min-w-96"
-            />
-            <div class="flex flex-col gap-3 w-full">
-                <h2 class="font-serif text-4xl text-neutral-600">Bio</h2>
-                <p class="font-sans text-base text-neutral-950">
-                    Lorem ipsum qui esse magna culpa laborum veniam aliquip
-                    tempor dolore quis sint anim. Voluptate aute ea do
-                    incididunt consectetur elit enim nostrud reprehenderit. Ut
-                    labore amet laboris. Mollit ex excepteur est commodo
-                    deserunt adipiscing. Ullamco fugiat non cupidatat occaecat
-                    velit id exercitation eu labore tempor. Nulla aute
-                    exercitation sed aliquip aliqua officia irure velit sint
-                    elit eiusmod. Commodo consectetur duis voluptate
-                    reprehenderit dolor pariatur incididunt nostrud fugiat ad
-                    id. Dolore nisi ullamco veniam adipiscing. Sit magna ut
-                    consequat amet non in laborum. Culpa eu quis qui cupidatat
-                    ex sunt occaecat laboris anim. Esse ea excepteur et minim
-                    cillum est do enim mollit proident deserunt.
-                </p>
-            </div>
+<PageSection id="bio" class="bg-neutral-300">
+    <div class="flex flex-row flex-wrap-reverse gap-4 justify-between items-center w-full">
+        <BioSvg />
+        <div class="flex flex-col gap-3 w-full lg:w-2/3">
+            <h2
+                class="font-serif text-7xl text-neutral-950 tracking-tighter uppercase"
+            >
+                Bio
+            </h2>
+            <p class="font-sans text-xl text-neutral-950">
+                As an educator, Steve Kramp has taught at UC Merced, the
+                Franciscan University of Steubenville, and most recently at John
+                Paul the Great Catholic University, where he served for seven
+                years as Humanities Chair. His parallel work as a writer and
+                performing artist has led to a range of poetry and nonfiction
+                along with recurrent tinnitus from playing in several
+                high-decibel bands. He lives with his family in the mountains
+                outside San Diego.
+            </p>
         </div>
-    </SectionWrapper>
+    </div>
 </PageSection>

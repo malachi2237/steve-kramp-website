@@ -1,38 +1,33 @@
 ---
 import PageSection from "./generic/pagesection.astro";
 import SectionWrapper from "./generic/sectionwrapper.astro";
-import speakingImage from "../images/steve-kramp-public-speaking.jpg";
-import Button from "./generic/button";
+import speakingImage from "../images/steve-kramp-public-speaking.png";
+import Learnmore from "./learnmore.astro";
 import { Picture } from "astro:assets";
 ---
 
-<PageSection id="bio" wrapper="no">
-    <SectionWrapper maxWidth="lg:w-6/8">
-        <div
-            class="flex flex-col md:flex-row justify-center items-center gap-12 w-full"
-        >
-            <div class="flex flex-col gap-3 w-1/2">
-                <h2 class="font-serif text-4xl text-neutral-600">Bio</h2>
-                <p class="font-sans text-base text-neutral-950">
-                    Lorem ipsum nisi consequat proident fugiat elit esse ad
-                    ullamco in et aliqua adipiscing. Exercitation consectetur eu
-                    sunt sit aute irure officia anim aliquip labore ea. Laboris
-                    voluptate occaecat nostrud mollit dolor nulla tempor veniam
-                    sed. Cupidatat dolore non amet.
+<PageSection id="bio" wrapper="no" class=" lg:h-148 xl:h-192 relative">
+    <SectionWrapper maxWidth="lg:w-6/8" class="h-full">
+            <div class="flex flex-col gap-3 w-full lg:w-1/2 h-full justify-center">
+                <h2 class="font-serif text-7xl text-neutral-950">Speaking</h2>
+                <p class="font-sans text-xl text-neutral-950">
+                    Some essential dialogues about cultural renewal don’t happen
+                    on their own. Rather, they require deep preparation,
+                    courage, and chemistry. The following topics spark grateful
+                    interaction simply because 1) they matter, 2) anyone paying
+                    attention to our culture knows they matter, and 3) no one
+                    else is tracing these lines of thought today.
                 </p>
-                <Button link="/speaking">
-                    Book
-                </Button>
+                <Learnmore/>
             </div>
-            <div class="w-1/2">
-            <Picture
-                src={speakingImage}
-                formats={["avif", "webp", "jpg"]}
-                alt="Steve Kramp giving a lecture at a podium"
-                layout="full-width"
-                class=""
-            />
-            </div>
-        </div>
     </SectionWrapper>
+    <div class="h-full lg:absolute lg:top-0 lg:right-0 opacity-50">
+        <Picture
+            src={speakingImage}
+            formats={["avif", "webp", "jpg"]}
+            alt="Steve Kramp giving a lecture at a podium"
+            pictureAttributes={{class:"h-full"}}
+            class="h-full object-contain object-bottom-right w-fit"
+        />
+    </div>
 </PageSection>

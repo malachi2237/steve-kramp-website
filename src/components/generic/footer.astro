@@ -1,6 +1,24 @@
 ---
+import SectionWrapper from "./sectionwrapper.astro"
 ---
 
-<footer class="bg-primary-500 h-48">
-
+<footer class="bg-neutral-300 h-fit">
+    <SectionWrapper class="text-neutral-800 flex flex-row gap-x-48 gap-y-4 flex-wrap justify-between items-end mx-auto">
+    <ul class="w-fit">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/">Speaking</a>
+        </li>
+    </ul>
+    <div class="w-fit">
+        <p>Steve Kramp ©2025</p>
+        <p>
+            Designed and developed by <a
+                href="https://www.biplanestudio.com/"
+                class="font-bold">Biplane Studio</a>
+        </p>
+    </div>
+    </SectionWrapper>
 </footer>

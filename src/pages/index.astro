@@ -1,22 +1,47 @@
 ---
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
-import BackgroundImage from "../components/generic/backgroundimage.astro";
 
-import heroImage from "../images/gentle-ocean-waves-breaking.jpg"
+import Learnmore from "../components/learnmore.astro";
+
+import heroImage from "../images/steve-kramp-quarter-side.webp";
+
 import Bio from "../components/bio.astro";
 import Speaking from "../components/speaking.astro";
+import { Picture } from "astro:assets";
 ---
 
 <PageLayout>
-    <PageSection
-        id="#"
-        class="h-128"
-        wrapper="no"
+    <PageSection id="#" class="h-fit pt-24 sm:pt-0 lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="flex flex-col sm:flex-row px-1/8 h-full justify-between items-center lg:mx-auto lg:px-0 md:px-16 px-4 pt-11 lg:w-6/8"
         >
-        <BackgroundImage src={heroImage} loading="eager"/>
-        <div class="h-full w-full bg-linear-to-b from-neutral-50/0 to-neutral-50/100"></div>
+            <div class="text-neutral-950 self-start relative top-1/4">
+                <h1
+                    class="font-serif font-semibold text-white text-7xl sm:text-8xl uppercase tracking-tighter"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-serif font-semibold text-white text-7xl sm:text-8xl uppercase tracking-tighter blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    Encountering the counter-culture
+                </h2>
+                <Learnmore/>
+            </div>
+            <Picture
+                src={heroImage}
+                alt=""
+                loading="eager"
+                formats={["avif", "webp"]}
+                pictureAttributes={{ class: "h-full" }}
+                class="h-full object-contain object-bottom-right w-fit"
+            />
+        </div>
     </PageSection>
-    <Bio/>
-    <Speaking/>
+    <Bio />
+    <Speaking />
 </PageLayout>

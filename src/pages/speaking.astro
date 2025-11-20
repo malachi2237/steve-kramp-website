@@ -1,0 +1,37 @@
+---
+import PageLayout from "../layouts/pagelayout.astro";
+import PageSection from "../components/generic/pagesection.astro";
+import ContactForm from "../components/generic/contactform.astro";
+---
+
+<PageLayout>
+    <PageSection class="bg-neutral-300">
+        <div class="text-neutral-950 flex flex-col justify-center items-center gap-16">
+            <div>
+                <h1 class="font-serif text-7xl text-neutral-950 tracking-tighter uppercase">Talks</h1>
+                <p class="md:text-xl max-w-250">
+                    Some essential dialogues about cultural renewal don’t happen
+                    on their own. Rather, they require deep preparation,
+                    courage, and chemistry. The following topics spark grateful
+                    interaction simply because 1) they matter, 2) anyone paying
+                    attention to our culture knows they matter, and 3) no one
+                    else is tracing these lines of thought today.
+                </p>
+            </div>
+                <ul class="px-2 md:text-xl max-w-150 list-[circle]">
+                    <li>The Secular Argument Against Psychedelics</li>
+                    <li>A Christian Response to Psychedelics</li>
+                    <li>The Psychedelic Revolution in America</li>
+                    <li>Psychedelics in World Cultures: A Spiritual Survey</li>
+                    <li>Psychedelics and the Bible</li>
+                    <li>Theological Beauty Vs. Countercultural Beauty</li>
+                    <li>The Poetry of Being</li>
+                    <li>Toward Catholic Cultural Renewal</li>
+                </ul>
+        </div>
+    </PageSection>
+    <PageSection>
+        <h2 class="font-serif text-5xl text-neutral-950 w-fit mx-auto">Speaking Inquiry</h2>
+        <ContactForm />
+    </PageSection>
+</PageLayout>

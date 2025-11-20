@@ -2,7 +2,7 @@
 
 @theme {
 
-  --font-sans: 'Farro', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: Overpass, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: 'Bona Nova SC', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
  --color-primary-950: oklch(0.05 0.021 252);
@@ -43,16 +43,15 @@
   --color-tertiary-100: oklch(0.80 0.115 3);
   --color-tertiary-50: oklch(0.90 0.054 3);
 
-  
-  --color-neutral-950: oklch(0.05 0.021 252);
-  --color-neutral-900: oklch(0.10 0.021 252);
-  --color-neutral-800: oklch(0.15 0.014 252);
-  --color-neutral-700: oklch(0.20 0.025 252);
-  --color-neutral-600: oklch(0.30 0.025 252);
+  --color-neutral-950: oklch(0.98 0.01 252);
+  --color-neutral-900: oklch(0.92 0.025 252);
+  --color-neutral-800: oklch(0.80 0.025 252);
+  --color-neutral-700: oklch(0.68 0.025 252);
+  --color-neutral-600: oklch(0.55 0.025 252);
   --color-neutral-500: oklch(0.42 0.025 252);
-  --color-neutral-400: oklch(0.55 0.025 252);
-  --color-neutral-300: oklch(0.68 0.025 252);
-  --color-neutral-200: oklch(0.80 0.025 252);
-  --color-neutral-100: oklch(0.92 0.025 252);
-  --color-neutral-50: oklch(0.98 0.01 252);
+  --color-neutral-400: oklch(0.30 0.025 252);
+  --color-neutral-300: oklch(0.20 0.014 252);
+  --color-neutral-200: oklch(0.15 0.014 252);
+  --color-neutral-100: oklch(0.10 0.021 252);
+  --color-neutral-50: oklch(0.05 0.021 252);
 }
