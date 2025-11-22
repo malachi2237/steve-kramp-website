@@ -21,13 +21,14 @@ import { Picture } from "astro:assets";
                 <Learnmore/>
             </div>
     </SectionWrapper>
-    <div class="h-full lg:absolute lg:top-0 lg:right-0 opacity-50">
         <Picture
             src={speakingImage}
-            formats={["avif", "webp", "jpg"]}
-            alt="Steve Kramp giving a lecture at a podium"
-            pictureAttributes={{class:"h-full"}}
-            class="h-full object-contain object-bottom-right w-fit"
+            formats={["avif", "webp"]}
+            alt="Steve Kramp giving a lecture at a podium. Several young people listen from the crowd"
+            layout="constrained"
+            fit="contain"
+            position="right"
+            pictureAttributes={{class:"h-full lg:absolute lg:top-0 lg:right-0 opacity-50"}}
+            class="max-h-full w-auto"
         />
-    </div>
 </PageSection>
