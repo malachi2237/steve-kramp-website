@@ -1,11 +1,31 @@
 @import "tailwindcss";
 
+
 @theme {
+  @keyframes pulse {
+    50% {
+      opacity: 0.0;
+    }
+  }
 
-  --font-sans: Overpass, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: 'Bona Nova SC', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --animate-pulse: pulse 4s cubic-bezier(1, .5, .5, 1) infinite;
+  --font-sans: Overpass,
+  ui-sans-serif,
+  system-ui,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji";
+  --font-serif: 'Bona Nova SC',
+  ui-serif,
+  Georgia,
+  Cambria,
+  "Times New Roman",
+  Times,
+  serif;
 
- --color-primary-950: oklch(0.05 0.021 252);
+  --color-primary-950: oklch(0.05 0.021 252);
   --color-primary-900: oklch(0.10 0.021 252);
   --color-primary-800: oklch(0.15 0.032 252);
   --color-primary-700: oklch(0.20 0.06 252);
@@ -17,7 +37,7 @@
   --color-primary-100: oklch(0.80 0.084 252);
   --color-primary-50: oklch(0.90 0.045 252);
 
-  
+
   --color-secondary-950: oklch(0.05 0.017 77);
   --color-secondary-900: oklch(0.10 0.021 77);
   --color-secondary-800: oklch(0.15 0.031 77);
@@ -30,7 +50,7 @@
   --color-secondary-100: oklch(0.80 0.135 77);
   --color-secondary-50: oklch(0.90 0.084 77);
 
-  
+
   --color-tertiary-950: oklch(0.05 0.017 3);
   --color-tertiary-900: oklch(0.10 0.021 3);
   --color-tertiary-800: oklch(0.15 0.061 3);

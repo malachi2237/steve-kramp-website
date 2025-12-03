@@ -1,4 +1,8 @@
 ---
+import bona700 from "@fontsource/bona-nova-sc/files/bona-nova-sc-latin-700-normal.woff2?url";
+import overpass400I from "@fontsource/overpass/files/overpass-latin-400-italic.woff2?url";
+import overpass700I from "@fontsource/overpass/files/overpass-latin-700-italic.woff2?url";
+
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
 
@@ -11,7 +15,37 @@ import Speaking from "../components/speaking.astro";
 import { Picture } from "astro:assets";
 ---
 
-<PageLayout>
+<PageLayout
+    title="Home"
+    description=`As an educator, Steve Kramp has taught at UC Merced, the
+                Franciscan University of Steubenville, and most recently at John
+                Paul the Great Catholic University, where he served for seven
+                years as Humanities Chair. His parallel work as a writer and
+                performing artist has led to a range of poetry and nonfiction`
+>
+    <Fragment slot="head">
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={bona700}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={overpass400I}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={overpass700I}
+            crossorigin="anonymous"
+        />
+    </Fragment>
     <PageSection
         id="#"
         class="h-fit lg:h-120 xl:h-171 bg-neutral-50"
@@ -20,7 +54,9 @@ import { Picture } from "astro:assets";
         <div
             class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
         >
-            <div class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2">
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
                 <h1
                     class="font-serif font-semibold text-white text-7xl sm:text-8xl uppercase tracking-tighter"
                 >
@@ -32,20 +68,21 @@ import { Picture } from "astro:assets";
                     Steve Kramp
                 </p>
                 <h2 class="font-sans italic font-normal text-2xl">
-                    Encountering the counter-culture
+                    <span class="animate-pulse">En</span>countering the counter-culture
                 </h2>
                 <Learnmore />
             </div>
-                <Picture
-                    src={heroImage}
-                    alt="Steve Kramp in a dark suit and light shirt looking toward the left"
-                    loading="eager"
-                    layout="constrained"
-                    position="bottom"
-                    fit="contain"
-                    formats={["avif", "webp"]}
-                    class="max-h-full w-auto lg:float-right"
-                />
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                priority
+                widths={[240, 300, 400, 500, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
         </div>
     </PageSection>
     <Bio />
