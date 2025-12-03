@@ -6,7 +6,7 @@ import overpass700I from "@fontsource/overpass/files/overpass-latin-700-italic.w
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
 
-import Learnmore from "../components/learnmore.astro";
+import LearnMore from "../components/learnmore.astro";
 
 import heroImage from "../images/steve-kramp-quarter-side.webp";
 
@@ -68,13 +68,15 @@ import { Picture } from "astro:assets";
                     Steve Kramp
                 </p>
                 <h2 class="font-sans italic font-normal text-2xl">
-                    <span class="animate-pulse">En</span>countering the counter-culture
+                    <span class="animate-pulse">En</span>countering the
+                    counter-culture
                 </h2>
-                <Learnmore />
+                <LearnMore />
             </div>
             <Picture
                 src={heroImage}
                 alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="max"
                 priority
                 widths={[240, 300, 400, 500, 685]}
                 layout="constrained"

@@ -9,15 +9,15 @@ interface Props {
 
 const { pagesWithUrls, class: className } = Astro.props;
 const currentAppearance =
-    "text-neutral-950 after:w-full after:h-0.5 after:block after:bg-primary-50";
+    "text-neutral-950 after:w-3/4 after:mx-auto lg:after:w-full after:h-0.5 after:block after:bg-primary-50";
 const otherAppearance = "text-neutral-950 hover:text-neutral-500";
 ---
 
-<nav class:list={[className, ""]}>
+<nav class:list={[className, "w-8"]}>
     <input id="menu-btn" type="checkbox" class="hidden peer z-11" />
     <label
         for="menu-btn"
-        class="relative select-none cursor-pointer group h-full lg:hidden"
+        class="relative select-none cursor-pointer group h-full lg:hidden px-8 py-1"
     >
         <span
             class="bg-primary-50 relative h-0.5 w-8 block transition-all lg:hidden
