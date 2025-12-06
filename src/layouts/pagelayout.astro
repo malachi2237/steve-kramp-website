@@ -3,7 +3,7 @@ interface Props {
     title: string;
     description?: string;
 }
-const { title, description = "" } = Astro.props;
+const { title, description = "" } = Astro.props as Props;
 const pageTitle: string = "Steve Kramp | " + title;
 import "@fontsource/overpass";
 import "@fontsource/overpass/400-italic.css";
@@ -28,7 +28,7 @@ import "../styles/global.css";
     </head>
     <body class="bg-neutral-50">
         <Header pagesWithUrls={{ Home: "/", Speaking: "/speaking" }} />
-        <main class="min-h-screen pt-20">
+        <main class="min-h-screen pt-20 overflow-clip relative">
             <slot />
         </main>
         <Footer />

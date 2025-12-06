@@ -1,11 +1,27 @@
 ---
+import type { LocalImageProps } from "astro:assets";
 import { Picture } from "astro:assets";
-const { src, alt, loading, position, zIndex, class: className, ...attrs} = Astro.props;
 
-let widthArray: Array<number> = []
+type Props = LocalImageProps & {
+    zIndex?: number;
+};
+const {
+    src,
+    alt,
+    loading,
+    widths,
+    fit,
+    position,
+    layout,
+    zIndex,
+    priority,
+    class: className,
+} = Astro.props;
 
-for (let i = 100; i <= 2000; i+=100) {
-    widthArray.push(i)
+let widthArray: Array<number> = [];
+
+for (let i = 100; i <= 2000; i += 100) {
+    widthArray.push(i);
 }
 ---
 
@@ -13,11 +29,12 @@ for (let i = 100; i <= 2000; i+=100) {
     src={src}
     alt={alt || ""}
     loading={loading || "lazy"}
-    formats={['avif', 'webp', 'png']}
-    widths={widthArray}
-    class:list={[
-        `absolute ${position || "top-0"} w-full ${zIndex || '-z-1'} object-cover`,
-        className
-    ]},
-    {...attrs}
+    formats={["avif", "webp"]}
+    layout={layout || "constrained"}
+    fit={fit || "cover"}
+    widths={widths}
+    style={zIndex ? "z-index: " + zIndex : ""}
+    class:list={["absolute", className]}
+    position={position}
+    priority={priority}
 />
