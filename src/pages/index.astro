@@ -1,7 +1,9 @@
 ---
+import bona400 from "@fontsource/bona-nova-sc/files/bona-nova-sc-latin-400-normal.woff2?url";
 import bona700 from "@fontsource/bona-nova-sc/files/bona-nova-sc-latin-700-normal.woff2?url";
 import overpass400I from "@fontsource/overpass/files/overpass-latin-400-italic.woff2?url";
 import overpass700I from "@fontsource/overpass/files/overpass-latin-700-italic.woff2?url";
+import overpass400 from "@fontsource/overpass/files/overpass-latin-400-normal.woff2?url";
 
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
@@ -28,6 +30,13 @@ import { Picture } from "astro:assets";
             rel="preload"
             as="font"
             type="font/woff2"
+            href={bona400}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
             href={bona700}
             crossorigin="anonymous"
         />
@@ -36,6 +45,13 @@ import { Picture } from "astro:assets";
             as="font"
             type="font/woff2"
             href={overpass400I}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={overpass400}
             crossorigin="anonymous"
         />
         <link
@@ -76,9 +92,9 @@ import { Picture } from "astro:assets";
             <Picture
                 src={heroImage}
                 alt="Steve Kramp in a dark suit and light shirt looking toward the left"
-                quality="max"
+                quality="high"
                 priority
-                widths={[240, 300, 400, 500, 685]}
+                widths={[400, 500, 665, 685]}
                 layout="constrained"
                 position="bottom"
                 fit="contain"

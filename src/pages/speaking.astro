@@ -1,4 +1,6 @@
 ---
+import bona400 from "@fontsource/bona-nova-sc/files/bona-nova-sc-latin-400-normal.woff2?url";
+import overpass400 from "@fontsource/overpass/files/overpass-latin-400-normal.woff2?url";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
 import ContactForm from "../components/generic/contactform.astro";
@@ -13,6 +15,22 @@ import ContactForm from "../components/generic/contactform.astro";
                     attention to our culture knows they matter, and 3) no one
                     else is tracing these lines of thought today.`
 >
+<Fragment slot="head">
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={bona400}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={overpass400}
+            crossorigin="anonymous"
+        />
+    </Fragment>
     <PageSection class="bg-neutral-300">
         <div
             class="text-neutral-950 flex flex-col justify-center items-center gap-16"
