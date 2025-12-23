@@ -14,5 +14,6 @@ export default defineConfig({
   integrations: [partytown(), preact(), sitemap()],
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  trailingSlash: "never"
 });
