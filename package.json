@@ -17,6 +17,8 @@
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.11.0",
     "preact": "^10.26.9",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.7",
+    "validator": "^13.15.23",
+    "wrangler": "^4.52.1"
   }
 }
