@@ -1,44 +1,111 @@
 import validator from 'validator'
 
-function sanitizeAndValidateForm(uFormData) {
-    const expected = [
-        "name",
-        "email",
-        "message"
-    ]
+function validateRequest(request: Request, targetDomain: string) {
+    return request.headers.get("content-type") === "application/x-www-form-urlencoded" &&
+        validator.isURL(request.url, {
+            protocols: ['https'],
+            host_whitelist: [targetDomain, "www." + targetDomain],
+            allow_query_components: false
+        }) &&
+        validator.isURL(request.headers.get("origin") || "", {
+            protocols: ['https'],
+            host_whitelist: [targetDomain, "www." + targetDomain],
+            allow_query_components: false
+        }) &&
+        validator.isURL(request.headers.get("host") || "", {
+            protocols: ['https'],
+            host_whitelist: [targetDomain, "www." + targetDomain],
+            allow_query_components: false
+        }) &&
+        validator.isURL(request.headers.get("referer") || "", {
+            protocols: ['https'],
+            host_whitelist: [targetDomain, "www." + targetDomain],
+            allow_query_components: false
+        })
+}
 
+function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
+    let formLength = 0
+    uFormData.forEach(() => formLength++)
+    const lengthValid = formLength === expected.length
+    const emailValid = typeof uFormData.get('email') === "string" && validator.isEmail(uFormData.get("email") as string)
+    const nameValid = typeof uFormData.get('name') === "string" && !validator.isEmpty(uFormData.get("name") as string)
+    const messageValid = (uFormData.get("message")?.toString().length || 0) >= 5
 
     if (
-        uFormData.keys().length == expected.length &&
-        validator.isAlpha(uFormData.get("route"), "-/") || uFormData.get("route") === "/" &&
-        validator.isEmail(uFormData.get("email")) &&
-        !validator.isEmpty(uFormData.get("name")) &&
-        uFormData.get("message").length >= 5
+        lengthValid &&
+        emailValid &&
+        nameValid &&
+        messageValid
     ) {
         const sFormData = new FormData()
-        sFormData.append("route", uFormData.get("route"))
-        sFormData.append("name", validator.escape(uFormData.get("name")))
-        sFormData.append("email", uFormData.get("email"))
-        sFormData.append("message", validator.escape(uFormData.get("message")))
+        sFormData.set("name", validator.escape(uFormData.get("name") as string))
+        sFormData.set("email", uFormData.get("email") || "")
+        sFormData.set("message", validator.escape(uFormData.get("message") as string))
 
         return sFormData
     }
+
+    console.log(
+        `
+        Valid length (${expected.length}): ${lengthValid}
+        Valid email: ${emailValid}
+        Valid name: ${nameValid}
+        Valid message: ${messageValid}
+        `
+    )
+    console.log(uFormData)
     return undefined
 }
 
-export async function onRequestPost(ctx) {
+async function validateTurnstile(uForm: FormData, secretKey: string, ip: string | null) {
+    const token: string = uForm.get('cf-turnstile-response')?.toString() || ""
+    const formData = new FormData();
+    formData.append('secret', secretKey)
+    formData.append('response', token)
+    formData.append('remoteip', ip || "")
+
+    try {
+        const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+            method: 'POST',
+            body: formData
+        })
+        return response.ok
+    } catch (error) {
+        console.error('Turnstile validation error:', error);
+        return false
+    }
+}
+
+export const onRequestPost: PagesFunction = async (ctx) => {
+    const isLive = ctx.env.DEPLOY_TYPE === "live"
+    const expected = [
+        "name",
+        "email",
+        "message",
+        "cf-turnstile-response"
+    ]
+
+    if (isLive && !validateRequest(ctx.request, ctx.env.domain)) {
+        console.log(ctx.request)
+        return new Response("Success!")
+    }
     const uForm = await ctx.request.formData()
-    const sForm = sanitizeAndValidateForm(uForm)
-    if (sForm) {
-        sForm.append("key", ctx.env.FORM_KEY)
+    const turnstileResponse = !isLive || validateTurnstile(uForm, ctx.env.TURNSTILE_SECRET_KEY, ctx.request.headers.get("CF-Connecting-IP"))
+    const sForm = sanitizeAndValidateForm(uForm, expected)
+
+    if (sForm && await turnstileResponse) {
+        sForm.set("key", ctx.env.FORM_KEY)
     }
     else {
-        return new Response('Form validation failed')
+        console.log(sForm)
+        return new Response('Success!')
     }
-    console.log(sForm)
-    const forwardedRequest = new Request(ctx.request, { body: sForm })
 
-    console.log(forwardedRequest)
-    
-    return await ctx.env.FORM_SUBMIT.fetch(forwardedRequest)
+    const forwardedRequest = new Request(ctx.request.url, {
+        method: 'POST',
+        body: sForm,
+    })
+
+    return isLive ? await ctx.env.FORM_SUBMIT.fetch(forwardedRequest) : new Response("Form submission simulation success!")
 }
