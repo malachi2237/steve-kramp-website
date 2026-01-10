@@ -1,14 +1,8 @@
 <form
-    action="https://api.web3forms.com/submit"
+    action="/submit"
     method="POST"
     class="text-gray-300 text-md flex flex-col lg:w-1/2 w-full my-16 mx-auto"
 >
-    <input
-        type="hidden"
-        name="access_key"
-        value="e46cf3b8-ddd0-4f39-9683-6edcd946966d"
-    />
-
     <label for="name">Name</label>
     <input
         type="text"
@@ -34,14 +28,14 @@
         required
         class="h-52 border-b-2 border-white mb-16 text-white text-xl"
     ></textarea>
-
-    <input
-        type="checkbox"
-        name="botcheck"
-        class="hidden"
-        style="display: none;"
-    />
-
+    {
+        import.meta.env.PROD && (
+            <div
+                class="cf-turnstile w-full"
+                data-sitekey={import.meta.env.TURNSTILE_PUBLIC_KEY}
+            />
+        )
+    }
     <input
         type="submit"
         value="Submit"

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import partytown from '@astrojs/partytown';
 import tailwindcss from '@tailwindcss/vite';
@@ -15,5 +15,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  trailingSlash: "never"
+  trailingSlash: "never",
+  env: {
+    schema: {
+      FORM_KEY: envField.string({ context: "server", access: "secret" }),
+      TURNSTILE_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
+      TURNSTILE_PUBLIC_KEY: envField.string({ context: "client", access: "public" })
+    }
+  }
 });

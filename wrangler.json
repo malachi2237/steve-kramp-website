@@ -1,8 +1,12 @@
 
 {
     "name": "steve-kramp-website",
-    "compatibility_date":"2025-12-03",
-    "assets": {
-      "directory": "./dist"
-    }
+    "compatibility_date":"2026-01-10",
+    "pages_build_output_dir":"./dist",
+    "services": [
+      {
+        "binding": "FORM_SUBMIT",
+        "service": "form-relay"
+      }
+    ]
   }
