@@ -1,12 +1,29 @@
-
 {
-    "name": "steve-kramp-website",
-    "compatibility_date":"2026-01-10",
-    "pages_build_output_dir":"./dist",
-    "services": [
-      {
-        "binding": "FORM_SUBMIT",
-        "service": "form-relay"
+  "name": "steve-kramp-website",
+  "compatibility_date": "2026-01-10",
+  "pages_build_output_dir": "./dist",
+  "env": {
+    "production": {
+      "services": [
+        {
+          "binding": "FORM_SUBMIT",
+          "service": "form-relay"
+        }
+      ],
+      "vars": {
+        "domain": "stevekramp.com"
       }
-    ]
+    },
+    "preview": {
+      "services": [
+        {
+          "binding": "FORM_SUBMIT",
+          "service": "form-relay"
+        }
+      ],
+      "vars": {
+        "domain": "dev.steve-kramp-website.pages.dev"
+      }
+    }
   }
+}
