@@ -15,7 +15,7 @@ import ContactForm from "../components/generic/contactform.astro";
                     attention to our culture knows they matter, and 3) no one
                     else is tracing these lines of thought today.`
 >
-<Fragment slot="head">
+    <Fragment slot="head">
         <link
             rel="preload"
             as="font"
@@ -30,7 +30,26 @@ import ContactForm from "../components/generic/contactform.astro";
             href={overpass400}
             crossorigin="anonymous"
         />
+        {
+            import.meta.env.PROD && (
+                <link
+                    rel="preconnect"
+                    href="https://challenges.cloudflare.com"
+                />
+            )
+        }
     </Fragment>
+    {
+        import.meta.env.PROD && (
+            <script
+                is:inline
+                slot="closing"
+                src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                async
+                defer
+            />
+        )
+    }
     <PageSection class="bg-neutral-300">
         <div
             class="text-neutral-950 flex flex-col justify-center items-center gap-16"
