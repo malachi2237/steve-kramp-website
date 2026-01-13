@@ -24,6 +24,27 @@
   "Times New Roman",
   Times,
   serif;
+  --font-franklin: 'Libre Franklin Variable',
+  ui-serif,
+  Georgia,
+  Cambria,
+  "Times New Roman",
+  Times,
+  serif;
+  --font-arsenal: 'Arsenal',
+  ui-serif,
+  Georgia,
+  Cambria,
+  "Times New Roman",
+  Times,
+  serif;
+  --font-libertinus: 'Libertinus Sans',
+  ui-serif,
+  Georgia,
+  Cambria,
+  "Times New Roman",
+  Times,
+  serif;
 
   --color-primary-950: oklch(0.05 0.021 252);
   --color-primary-900: oklch(0.10 0.021 252);

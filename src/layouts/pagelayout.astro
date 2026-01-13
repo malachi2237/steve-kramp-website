@@ -10,6 +10,9 @@ import "@fontsource/overpass/400-italic.css";
 import "@fontsource/overpass/700-italic.css";
 import "@fontsource/bona-nova-sc";
 import "@fontsource/bona-nova-sc/latin-700.css";
+import "@fontsource/arsenal"
+import "@fontsource-variable/libre-franklin"
+import "@fontsource/libertinus-sans"
 
 import Header from "../components/generic/header.astro";
 import Footer from "../components/generic/footer.astro";
@@ -28,7 +31,7 @@ import "../styles/global.css";
     </head>
     <body class="bg-neutral-50">
         <Header pagesWithUrls={{ Home: "/", Speaking: "/speaking" }} />
-        <main class="min-h-screen pt-20 overflow-clip relative">
+        <main class="min-h-screen pt-20 overflow-clip relative flex flex-col gap-48">
             <slot />
         </main>
         <Footer />

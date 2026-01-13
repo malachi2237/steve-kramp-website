@@ -62,11 +62,7 @@ import { Picture } from "astro:assets";
             crossorigin="anonymous"
         />
     </Fragment>
-    <PageSection
-        id="#"
-        class="h-fit lg:h-120 xl:h-171 bg-neutral-50"
-        wrapper="no"
-    >
+    <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
         <div
             class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
         >
@@ -74,7 +70,7 @@ import { Picture } from "astro:assets";
                 class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
             >
                 <h1
-                    class="font-serif font-semibold text-white text-7xl sm:text-8xl uppercase tracking-tighter"
+                    class="font-serif font-semibold text-white text-7xl sm:text-8xl uppercase tracking-tight"
                 >
                     Steve Kramp
                 </h1>
@@ -103,6 +99,189 @@ import { Picture } from "astro:assets";
             />
         </div>
     </PageSection>
-    <Bio />
-    <Speaking />
+    <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
+        >
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
+                <h1
+                    class="font-franklin font-medium text-white text-7xl sm:text-8xl uppercase tracking-tighter"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-franklin font-medium text-white text-7xl sm:text-8xl uppercase tracking-tighter opacity-50 md:opacity-75 lg:opacity-100 blur-xl md:blur-2xl lg:blur-3xl xl:blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    <span class="animate-pulse">En</span>countering the
+                    counterculture
+                </h2>
+                <LearnMore />
+            </div>
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="high"
+                priority
+                widths={[400, 500, 665, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
+        </div>
+    </PageSection>
+    <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
+        >
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
+                <h1
+                    class="font-libertinus not-last:text-white text-7xl sm:text-8xl uppercase tracking-tight"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-libertinus text-white text-7xl sm:text-8xl uppercase tracking-tight opacity-50 md:opacity-75 lg:opacity-100 blur-xl md:blur-2xl lg:blur-3xl xl:blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    <span class="animate-pulse">En</span>countering the
+                    counterculture
+                </h2>
+                <LearnMore />
+            </div>
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="high"
+                priority
+                widths={[400, 500, 665, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
+        </div>
+    </PageSection>
+     <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
+        >
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
+                <h1
+                    class="font-libertinus font-bold not-last:text-white text-7xl sm:text-8xl uppercase tracking-tight"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-libertinus font-bold text-white text-7xl sm:text-8xl uppercase tracking-tight opacity-50 md:opacity-75 lg:opacity-100 blur-xl md:blur-2xl lg:blur-3xl xl:blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    <span class="animate-pulse">En</span>countering the
+                    counterculture
+                </h2>
+                <LearnMore />
+            </div>
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="high"
+                priority
+                widths={[400, 500, 665, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
+        </div>
+    </PageSection>
+    <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
+        >
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
+                <h1
+                    class="font-arsenal text-white text-7xl sm:text-8xl uppercase tracking-tight"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-arsenal text-white text-7xl sm:text-8xl uppercase tracking-tight opacity-50 md:opacity-75 lg:opacity-100 blur-xl md:blur-2xl lg:blur-3xl xl:blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    <span class="animate-pulse">En</span>countering the
+                    counterculture
+                </h2>
+                <LearnMore />
+            </div>
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="high"
+                priority
+                widths={[400, 500, 665, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
+        </div>
+    </PageSection>
+    <PageSection class="h-fit lg:h-120 xl:h-171 bg-neutral-50" wrapper="no">
+        <div
+            class="px-1/8 h-full relative flex-row lg:flex-none lg:mx-auto lg:px-0 md:px-16 px-4 lg:w-6/8"
+        >
+            <div
+                class="text-neutral-950 relative mt-11 md:mt-20 lg:mt-0 lg:absolute lg:top-1/4 lg:w-1/2"
+            >
+                <h1
+                    class="font-arsenal font-bold text-white text-7xl sm:text-8xl uppercase tracking-tight"
+                >
+                    Steve Kramp
+                </h1>
+                <p
+                    class="absolute top-0 font-arsenal font-bold text-white text-7xl sm:text-8xl uppercase tracking-tight opacity-50 md:opacity-75 lg:opacity-100 blur-xl md:blur-2xl lg:blur-3xl xl:blur-[100px]"
+                >
+                    Steve Kramp
+                </p>
+                <h2 class="font-sans italic font-normal text-2xl">
+                    <span class="animate-pulse">En</span>countering the
+                    counterculture
+                </h2>
+                <LearnMore />
+            </div>
+            <Picture
+                src={heroImage}
+                alt="Steve Kramp in a dark suit and light shirt looking toward the left"
+                quality="high"
+                priority
+                widths={[400, 500, 665, 685]}
+                layout="constrained"
+                position="bottom"
+                fit="contain"
+                formats={["avif", "webp"]}
+                class="max-h-full w-auto lg:float-right"
+            />
+        </div>
+    </PageSection>
 </PageLayout>
