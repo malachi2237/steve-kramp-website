@@ -37,7 +37,8 @@ function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
     var msgSpaces = -1
     var lastSpace = 0
     while (lastSpace >= 0 && msgSpaces < 2) {
-        lastSpace = msg.indexOf(" ", lastSpace)
+        lastSpace = msg.indexOf(" ", ++lastSpace)
+        console.log(lastSpace)
         msgSpaces++;
     }
     const messageValid = msgLengthTest && msgSpaces >= 2
@@ -59,6 +60,8 @@ function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
         Valid email: ${emailValid}
         Valid name: ${nameValid}
         Valid message: ${messageValid}
+            Message Length: ${msg.length}
+            # of spaces: ${msgSpaces}
         `
     )
     console.log(uFormData)
