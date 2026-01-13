@@ -36,7 +36,7 @@ function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
 
     var msgSpaces = -1
     var lastSpace = 0
-    while (lastSpace >= 0 || msgSpaces < 2) {
+    while (lastSpace >= 0 && msgSpaces < 2) {
         lastSpace = msg.indexOf(" ", lastSpace)
         msgSpaces++;
     }
