@@ -30,8 +30,17 @@ function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
     const lengthValid = formLength === expected.length
     const emailValid = typeof uFormData.get('email') === "string" && validator.isEmail(uFormData.get("email") as string)
     const nameValid = typeof uFormData.get('name') === "string" && !validator.isEmpty(uFormData.get("name") as string)
-    const messageValid = (uFormData.get("message")?.toString().length || 0) >= 5
 
+    const msg = uFormData.get("message")?.toString() || ""
+    const msgLengthTest = (msg.length || 0) >= 10
+
+    var msgSpaces = -1
+    var lastSpace = 0
+    while (lastSpace >= 0 || msgSpaces < 2) {
+        lastSpace = msg.indexOf(" ", lastSpace)
+        msgSpaces++;
+    }
+    const messageValid = msgLengthTest && msgSpaces >= 2
     if (
         lengthValid &&
         emailValid &&
@@ -42,10 +51,8 @@ function sanitizeAndValidateForm(uFormData: FormData, expected: string[]) {
         sFormData.set("name", validator.escape(uFormData.get("name") as string))
         sFormData.set("email", uFormData.get("email") || "")
         sFormData.set("message", validator.escape(uFormData.get("message") as string))
-
         return sFormData
     }
-
     console.log(
         `
         Valid length (${expected.length}): ${lengthValid}
@@ -64,7 +71,6 @@ async function validateTurnstile(uForm: FormData, secretKey: string, ip: string 
     formData.append('secret', secretKey)
     formData.append('response', token)
     formData.append('remoteip', ip || "")
-
     try {
         const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
             method: 'POST',
