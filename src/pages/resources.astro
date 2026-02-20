@@ -1,0 +1,23 @@
+---
+import { getResources } from "../lib/sonicjs";
+import PageLayout from "../layouts/pagelayout.astro";
+import PageSection from "../components/generic/pagesection.astro";
+
+const resources = await getResources();
+---
+
+<PageLayout title="Resources">
+    <PageSection>
+        <h1>Resources</h1>
+        <div class="flex flex-col gap-4 bg-white">
+            {
+                resources.map((resource) => (
+                    <div>
+                        <h2>{resource.data.publisher ? resource.title + " | " + resource.data.publisher: resource.title}</h2>
+                        <p>{resource.data.content}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </PageSection>
+</PageLayout>

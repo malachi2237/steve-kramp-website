@@ -19,7 +19,7 @@ interface Resource {
   status: string;
   data: {
     title: string;
-    contact: string;
+    content: string;
     thumbnail?: string;
     external_link?: string;
     file_attachment?: string;
@@ -32,7 +32,7 @@ interface Resource {
 // Fetch all published blog posts
 export async function getResources(): Promise<Resource[]> {
   const response = await fetch(
-    `${API_URL}/api/collections/blog-posts/content?filter[status][equals]=published&sort=-created_at`
+    `${API_URL}/api/collections/resources/content?filter[status][equals]=published&sort=-created_at`
   );
 
   if (!response.ok) {
@@ -46,7 +46,7 @@ export async function getResources(): Promise<Resource[]> {
 // Fetch a single blog post by slug
 export async function getResourceBySlug(slug: string): Promise<Resource | null> {
   const response = await fetch(
-    `${API_URL}/api/collections/blog-posts/content?filter[data.slug][equals]=${slug}&filter[status][equals]=published`
+    `${API_URL}/api/resources/blog-posts/content?filter[data.slug][equals]=${slug}&filter[status][equals]=published`
   );
 
   if (!response.ok) {
