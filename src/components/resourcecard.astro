@@ -1,0 +1,37 @@
+---
+import Arrow from "../images/vectors/arrow-long-right.svg";
+import { Picture } from "astro:assets";
+import { DisplayResource } from "../lib/sonicjs";
+
+interface Props {
+    resource: DisplayResource;
+    class?: string;
+}
+const { resource, class: className } = Astro.props;
+---
+
+<article class="bg-neutral-200">
+    {
+        resource.thumbnailUrl && (
+            <div class="h-48 overflow-clip">
+            <Picture
+                src={resource.thumbnailUrl}
+                formats={["avif", "webp"]}
+                alt="Steve Kramp giving a lecture at a podium. Several young people listen from the crowd"
+                widths={[100, 200, 300, 400, 480]}
+                layout="constrained"
+                fit="cover"
+                position="center"
+                class="h-full w-full object-cover object-center opacity-75"
+                inferSize
+            />
+            </div>
+        )
+    }
+    <div class="w-full p-4 gap-3">
+        <h2 class="text-3xl font-serif text-neutral-800 mb-3">
+            {resource.title}
+        </h2>
+        <p class="text-lg font-sans text-neutral-950">{resource.content}</p>
+    </div>
+</article>

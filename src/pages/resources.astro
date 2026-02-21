@@ -2,7 +2,8 @@
 import { getResources, toDisplayResources } from "../lib/sonicjs";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
-import { Image } from "astro:assets";
+import Multicard from "../components/generic/multicard.astro";
+import Resourcecard from "../components/resourcecard.astro";
 
 const resources = await getResources().then(toDisplayResources);
 // /files/uploads/
@@ -11,14 +12,10 @@ const resources = await getResources().then(toDisplayResources);
 <PageLayout title="Resources">
     <PageSection>
         <h1>Resources</h1>
-        <div class="flex flex-col gap-4 bg-white">
+        <Multicard elementMinSize="24rem">
             {
                 resources.map((resource) => (
-                    <div>
-                        {resource.thumbnailUrl && <Image src={resource.thumbnailUrl} alt="" inferSize/>}
-                        <h2>{resource.title}</h2>
-                        <p>{resource.content}</p>
-                    </div>
+                    <Resourcecard resource={resource}/>
                 ))
             }
         </div>

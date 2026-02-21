@@ -32,7 +32,7 @@ interface Resource {
 
 const mediaCMSPath = "/files/uploads/";
 
-class DisplayResource {
+export class DisplayResource {
   title: string = "";
   content: string = "";
   thumbnailUrl?: string;
