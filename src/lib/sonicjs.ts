@@ -1,4 +1,5 @@
 const API_URL = import.meta.env.SONICJS_API_URL || 'http://localhost:8787';
+const DEFAULT_THUMBNAIL = "/files/uploads/58d432e4-a30a-42ee-ae00-8174f5aff439.webp"
 
 interface SonicJSResponse<T> {
   data: T;
@@ -29,6 +30,17 @@ interface Resource {
   updated_at: number;
 }
 
+const mediaCMSPath = "/files/uploads/";
+
+class DisplayResource {
+  title: string = "";
+  content: string = "";
+  thumbnailUrl?: string;
+  fileAttachmentUrl?: string;
+  externalLink?: string;
+  
+}
+
 // Fetch all published blog posts
 export async function getResources(): Promise<Resource[]> {
   const response = await fetch(
@@ -43,6 +55,17 @@ export async function getResources(): Promise<Resource[]> {
   return result.data;
 }
 
+export function toDisplayResources(resources: Resource[]): DisplayResource[] {
+  return resources.map(resource => {
+    return {
+      title: resource.title + (resource.data.publisher ? ` | ${resource.data.publisher}` : ""),
+      content: resource.data.content,
+      thumbnailUrl: API_URL + (resource.data.thumbnail || DEFAULT_THUMBNAIL),
+      fileAttachmentUrl: resource.data.file_attachment && API_URL + resource.data.file_attachment,
+      externalLink: resource.data.external_link
+    }
+  })
+}
 // Fetch a single blog post by slug
 export async function getResourceBySlug(slug: string): Promise<Resource | null> {
   const response = await fetch(

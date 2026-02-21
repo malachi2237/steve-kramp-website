@@ -1,9 +1,11 @@
 ---
-import { getResources } from "../lib/sonicjs";
+import { getResources, toDisplayResources } from "../lib/sonicjs";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
+import { Image } from "astro:assets";
 
-const resources = await getResources();
+const resources = await getResources().then(toDisplayResources);
+// /files/uploads/
 ---
 
 <PageLayout title="Resources">
@@ -13,8 +15,9 @@ const resources = await getResources();
             {
                 resources.map((resource) => (
                     <div>
-                        <h2>{resource.data.publisher ? resource.title + " | " + resource.data.publisher: resource.title}</h2>
-                        <p>{resource.data.content}</p>
+                        {resource.thumbnailUrl && <Image src={resource.thumbnailUrl} alt="" inferSize/>}
+                        <h2>{resource.title}</h2>
+                        <p>{resource.content}</p>
                     </div>
                 ))
             }
