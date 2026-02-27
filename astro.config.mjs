@@ -31,7 +31,9 @@ export default defineConfig({
       FORM_KEY: envField.string({ context: "server", access: "secret" }),
       TURNSTILE_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
       TURNSTILE_PUBLIC_KEY: envField.string({ context: "client", access: "public" }),
-      SONICJS_API_URL: envField.string({context: "server", access: "secret"})
+      SONICJS_API_URL: envField.string({context: "server", access: "secret"}),
+      CDN_URL: envField.string({context: "server", access: "public"})
+
     }
   }
 });

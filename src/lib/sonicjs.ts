@@ -1,5 +1,6 @@
 const API_URL = import.meta.env.SONICJS_API_URL || 'http://localhost:8787';
-const DEFAULT_THUMBNAIL = "/files/uploads/58d432e4-a30a-42ee-ae00-8174f5aff439.webp"
+const FILE_URL = import.meta.env.CDN_URL
+const DEFAULT_THUMBNAIL = "/uploads/58d432e4-a30a-42ee-ae00-8174f5aff439.webp"
 
 interface SonicJSResponse<T> {
   data: T;
@@ -35,10 +36,10 @@ const mediaCMSPath = "/files/uploads/";
 export class DisplayResource {
   title: string = "";
   content: string = "";
-  thumbnailUrl?: string;
+  thumbnailUrl: string = "";
+  publisher? : string;
   fileAttachmentUrl?: string;
   externalLink?: string;
-  
 }
 
 // Fetch all published blog posts
@@ -56,12 +57,14 @@ export async function getResources(): Promise<Resource[]> {
 }
 
 export function toDisplayResources(resources: Resource[]): DisplayResource[] {
+  const sonicFilePrefix = "/files"
   return resources.map(resource => {
     return {
-      title: resource.title + (resource.data.publisher ? ` | ${resource.data.publisher}` : ""),
+      title: resource.title,
       content: resource.data.content,
-      thumbnailUrl: API_URL + (resource.data.thumbnail || DEFAULT_THUMBNAIL),
-      fileAttachmentUrl: resource.data.file_attachment && API_URL + resource.data.file_attachment,
+      publisher: resource.data.publisher,
+      thumbnailUrl: FILE_URL + (resource.data.thumbnail?.substring(sonicFilePrefix.length) || DEFAULT_THUMBNAIL),
+      fileAttachmentUrl: resource.data.file_attachment && FILE_URL + resource.data.file_attachment?.substring(sonicFilePrefix.length),
       externalLink: resource.data.external_link
     }
   })

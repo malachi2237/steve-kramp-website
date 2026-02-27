@@ -5,13 +5,17 @@ import PageSection from "../components/generic/pagesection.astro";
 import Multicard from "../components/generic/multicard.astro";
 import Resourcecard from "../components/resourcecard.astro";
 
-const resources = await getResources().then(toDisplayResources);
+const rawResources = await getResources()
+console.log(rawResources)
+const resources = toDisplayResources(rawResources)
 // /files/uploads/
+/* export const prerender = false; */
+
 ---
 
 <PageLayout title="Resources">
     <PageSection>
-        <h1>Resources</h1>
+        <h1 class="text-center font-serif text-neutral-950 text-5xl">Resources</h1>
         <Multicard elementMinSize="24rem">
             {
                 resources.map((resource) => (
