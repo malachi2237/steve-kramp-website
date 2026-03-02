@@ -10,7 +10,7 @@ interface Props {
 }
 const { resource, class: className } = Astro.props;
 
-const Wrapper = resource.externalLink ? "a" : 'div';
+const Wrapper = resource.externalLink ? "a" : "div";
 const wrapperProps = resource.externalLink
     ? {
           class: "block h-fit w-full group",
@@ -20,10 +20,16 @@ const wrapperProps = resource.externalLink
       }
     : { class: "block h-fit w-full group", href: "", target: "", rel: "" };
 
-    console.log(resource)
+console.log(resource);
+//TODO: Add link icon to the end of the content section for mobile
 ---
 
-<article class:list={[className, "flex flex-col gap-4 justify-between bg-neutral-300 rounded-sm"]}>
+<article
+    class:list={[
+        className,
+        "flex flex-col gap-4 justify-between bg-neutral-300 rounded-sm",
+    ]}
+>
     <Wrapper
         class={wrapperProps.class}
         href={wrapperProps.href}
@@ -45,12 +51,18 @@ const wrapperProps = resource.externalLink
             {
                 resource.externalLink && (
                     <div class="absolute top-0 h-full w-full bg-neutral-50 opacity-0 group-hover:opacity-75 transition-opacity p-16">
-                        <LinkIcon class="h-full w-auto stroke-neutral-950 overflow-visible mx-auto"/>
+                        <LinkIcon class="h-full w-auto stroke-neutral-950 overflow-visible mx-auto" />
                     </div>
                 )
             }
         </div>
-        <div class:list={["w-full p-4", resource.externalLink && "opacity-100 group-hover:opacity-50 transition-opacity"]}>
+        <div
+            class:list={[
+                "w-full p-4",
+                resource.externalLink &&
+                    "opacity-100 group-hover:opacity-50 transition-opacity",
+            ]}
+        >
             <h2 class="text-3xl font-serif mb-1 text-neutral-800">
                 {resource.title}
             </h2>
@@ -58,21 +70,20 @@ const wrapperProps = resource.externalLink
                 {resource.publisher}
             </p>
             <p class="font-sans text-neutral-900">{resource.content}</p>
-            
         </div>
     </Wrapper>
     {
-                resource.fileAttachmentUrl && (
-                    <div class="h-auto">
-                    <a
-                        href={resource.fileAttachmentUrl}
-                        class="font-sans italic font-bold text-xl text-neutral-950 hover:text-neutral-700 inline-block after:block after:bg-neutral-950 hover:after:bg-neutral-700 after:w-full after:h-0.5 group m-2 p-2"
-                        target="_blank"
-                    >
-                        Download
-                        <DownloadIcon class="inline [alignment-baseline:alphabetic;] align-baseline h-4.5 ml-1 w-auto fill-neutral-950! group-hover:fill-neutral-700!" />
-                    </a>
-                    </div>
-                )
-            }
+        resource.fileAttachmentUrl && (
+            <div class="h-auto">
+                <a
+                    href={resource.fileAttachmentUrl}
+                    class="font-sans italic font-bold text-xl text-neutral-950 hover:text-neutral-700 inline-block after:block after:bg-neutral-950 hover:after:bg-neutral-700 after:w-full after:h-0.5 group m-2 p-2"
+                    target="_blank"
+                >
+                    Download
+                    <DownloadIcon class="inline [alignment-baseline:alphabetic;] align-baseline h-4.5 ml-1 w-auto fill-neutral-950! group-hover:fill-neutral-700!" />
+                </a>
+            </div>
+        )
+    }
 </article>
