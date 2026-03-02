@@ -65,6 +65,11 @@ console.log(resource);
         >
             <h2 class="text-3xl font-serif mb-1 text-neutral-800">
                 {resource.title}
+                {
+                    resource.externalLink && (
+                        <LinkIcon class="hidden [@media(hover:none)]:visible [@media(hover:none)]:inline h-5 w-auto stroke-neutral-950 overflow-visible [alignment-baseline:alphabetic;] align-baseline" />
+                    )
+                }
             </h2>
             <p class="text-xl italic font-sans mb-3 text-neutral-700">
                 {resource.publisher}
