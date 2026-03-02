@@ -26,6 +26,7 @@ interface Resource {
     external_link?: string;
     file_attachment?: string;
     publisher?: string;
+    download_label?: string
   };
   created_at: number;
   updated_at: number;
@@ -39,6 +40,7 @@ export class DisplayResource {
   thumbnailUrl: string = "";
   publisher? : string;
   fileAttachmentUrl?: string;
+  downloadLabel?: string;
   externalLink?: string;
 }
 
@@ -65,6 +67,7 @@ export function toDisplayResources(resources: Resource[]): DisplayResource[] {
       publisher: resource.data.publisher,
       thumbnailUrl: FILE_URL + (resource.data.thumbnail?.substring(sonicFilePrefix.length) || DEFAULT_THUMBNAIL),
       fileAttachmentUrl: resource.data.file_attachment && FILE_URL + resource.data.file_attachment?.substring(sonicFilePrefix.length),
+      downloadLabel: resource.data.download_label,
       externalLink: resource.data.external_link
     }
   })
