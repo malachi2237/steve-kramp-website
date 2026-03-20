@@ -1,4 +1,6 @@
 ---
+import libertinus400 from "@fontsource/libertinus-sans/files/libertinus-sans-latin-400-normal.woff2?url";
+import overpass400 from "@fontsource/overpass/files/overpass-latin-400-normal.woff2?url";
 import { getResources, toDisplayResources } from "../lib/sonicjs";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
@@ -14,8 +16,24 @@ const resources = toDisplayResources(rawResources)
 ---
 
 <PageLayout title="Resources">
+    <Fragment slot="head">
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={libertinus400}
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href={overpass400}
+            crossorigin="anonymous"
+        />
+    </Fragment>
     <PageSection>
-        <h1 class="text-center font-serif text-neutral-950 text-5xl">Resources</h1>
+        <h1 class="text-center font-serif uppercase  text-neutral-950 text-5xl">Resources</h1>
         <Multicard elementMinSize="24rem">
             {
                 resources.map((resource) => (

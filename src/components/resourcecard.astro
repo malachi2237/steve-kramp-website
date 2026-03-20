@@ -36,18 +36,22 @@ console.log(resource);
         target={wrapperProps.target}
         rel={wrapperProps.rel}
     >
-        <div class="relative h-48 overflow-clip">
-            <Picture
-                src={resource.thumbnailUrl}
-                formats={["avif", "webp"]}
-                alt=""
-                widths={[100, 200, 300, 400, 480]}
-                layout="constrained"
-                fit="cover"
-                position="center"
-                class="h-full w-full object-cover object-center opacity-75"
-                inferSize
-            />
+        <div class:list={["relative overflow-clip mask-b-from-25%", resource.thumbnailUrl ? "h-48" : "h-24"]}>
+            {
+                resource.thumbnailUrl && (
+                    <Picture
+                        src={resource.thumbnailUrl}
+                        formats={["avif", "webp"]}
+                        alt=""
+                        widths={[100, 200, 300, 400, 480]}
+                        layout="constrained"
+                        fit="cover"
+                        position="center"
+                        class="h-full w-full object-cover object-top"
+                        inferSize
+                    />
+                )
+            }
             {
                 resource.externalLink && (
                     <div class="absolute top-0 h-full w-full bg-neutral-50 opacity-0 group-hover:opacity-75 transition-opacity p-16">
