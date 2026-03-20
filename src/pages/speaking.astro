@@ -1,5 +1,5 @@
 ---
-import bona400 from "@fontsource/bona-nova-sc/files/bona-nova-sc-latin-400-normal.woff2?url";
+import libertinus400 from "@fontsource/libertinus-sans/files/libertinus-sans-latin-400-normal.woff2?url";
 import overpass400 from "@fontsource/overpass/files/overpass-latin-400-normal.woff2?url";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
@@ -20,7 +20,7 @@ import ContactForm from "../components/generic/contactform.astro";
             rel="preload"
             as="font"
             type="font/woff2"
-            href={bona400}
+            href={libertinus400}
             crossorigin="anonymous"
         />
         <link
@@ -82,7 +82,7 @@ import ContactForm from "../components/generic/contactform.astro";
         </div>
     </PageSection>
     <PageSection>
-        <h2 class="font-serif text-5xl text-neutral-950 w-fit mx-auto">
+        <h2 class="font-serif text-5xl uppercase text-neutral-950 w-fit mx-auto">
             Speaking Inquiry
         </h2>
         <ContactForm />

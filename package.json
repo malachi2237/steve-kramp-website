@@ -12,7 +12,7 @@
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/preact": "^4.1.0",
     "@astrojs/sitemap": "^3.6.0",
-    "@fontsource/bona-nova-sc": "^5.2.7",
+    "@fontsource/libertinus-sans": "^5.2.2",
     "@fontsource/overpass": "^5.2.8",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.11.0",
