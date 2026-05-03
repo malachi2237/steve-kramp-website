@@ -13,21 +13,23 @@ const { resource, class: className } = Astro.props;
 const Wrapper = resource.externalLink ? "a" : "div";
 const wrapperProps = resource.externalLink
     ? {
-          class: "block h-fit w-full group",
+          class: "block h-fit w-full group flex flex-row flex-wrap items-center",
           href: resource.externalLink,
           target: "_blank",
           rel: "noopener noreferrer",
       }
-    : { class: "block h-fit w-full group", href: "", target: "", rel: "" };
-
-console.log(resource);
-//TODO: Add link icon to the end of the content section for mobile
+    : {
+          class: "h-fit w-full group flex flex-row flex-wrap items-start",
+          href: "",
+          target: "",
+          rel: "",
+      };
 ---
 
 <article
     class:list={[
         className,
-        "flex flex-col gap-4 justify-between bg-neutral-300 rounded-sm",
+        "flex flex-col my-8 w-full justify-between bg-neutral-300 rounded-sm",
     ]}
 >
     <Wrapper
@@ -36,46 +38,40 @@ console.log(resource);
         target={wrapperProps.target}
         rel={wrapperProps.rel}
     >
-        <div class:list={["relative overflow-clip mask-b-from-25%", resource.thumbnailUrl ? "h-48" : "h-24"]}>
-            {
-                resource.thumbnailUrl && (
+        {
+            resource.thumbnailUrl && (
+                <div class:list={["relative overflow-clip w-md xl:h-48"]}>
                     <Picture
                         src={resource.thumbnailUrl}
                         formats={["avif", "webp"]}
                         alt=""
-                        widths={[100, 200, 300, 400, 480]}
-                        layout="constrained"
+                        widths={[300, 400, 480]}
+                        layout="full-width"
                         fit="cover"
-                        position="center"
-                        class="h-full w-full object-cover object-top"
+                        position="top"
                         inferSize
                     />
-                )
-            }
-            {
-                resource.externalLink && (
-                    <div class="absolute top-0 h-full w-full bg-neutral-50 opacity-0 group-hover:opacity-75 transition-opacity p-16">
-                        <LinkIcon class="h-full w-auto stroke-neutral-950 overflow-visible mx-auto" />
-                    </div>
-                )
-            }
-        </div>
+                    {resource.externalLink && (
+                        <div class="absolute top-0 h-full w-full bg-neutral-50 opacity-0 group-hover:opacity-75 transition-opacity p-16">
+                            <LinkIcon class="h-full w-auto stroke-neutral-950 overflow-visible mx-auto" />
+                        </div>
+                    )}
+                </div>
+            )
+        }
         <div
             class:list={[
-                "w-full p-4",
+                "m-4 flex-1",
                 resource.externalLink &&
                     "opacity-100 group-hover:opacity-50 transition-opacity",
             ]}
         >
-            <h2 class="text-3xl font-serif mb-1 text-neutral-800">
+            <h2
+                class="text-3xl font-serif mb-1 text-neutral-800 [@media(hover:none)]:underline"
+            >
                 {resource.title}
-                {
-                    resource.externalLink && (
-                        <LinkIcon class="hidden [@media(hover:none)]:visible [@media(hover:none)]:inline h-5 w-auto stroke-neutral-950 overflow-visible [alignment-baseline:alphabetic;] align-baseline" />
-                    )
-                }
             </h2>
-            <p class="text-xl italic font-sans mb-3 text-neutral-700">
+            <p class="text-xl italic font-sans text-neutral-700">
                 {resource.publisher}
             </p>
             <p class="font-sans text-neutral-900">{resource.content}</p>
@@ -83,16 +79,14 @@ console.log(resource);
     </Wrapper>
     {
         resource.fileAttachmentUrl && (
-            <div class="h-auto">
-                <a
-                    href={resource.fileAttachmentUrl}
-                    class="font-sans italic font-bold text-xl text-neutral-950 hover:text-neutral-700 inline-block after:block after:bg-neutral-950 hover:after:bg-neutral-700 after:w-full after:h-0.5 group m-2 p-2"
-                    target="_blank"
-                >
-                    {resource.downloadLabel || "Download"}
-                    <DownloadIcon class="inline [alignment-baseline:alphabetic;] align-baseline h-4.5 ml-1 w-auto fill-neutral-950! group-hover:fill-neutral-700!" />
-                </a>
-            </div>
+            <a
+                href={resource.fileAttachmentUrl}
+                class="font-sans m-4 italic font-bold w-fit text-xl text-neutral-950 hover:text-neutral-700 block after:block after:bg-neutral-950 hover:after:bg-neutral-700 after:w-full after:h-0.5 group"
+                target="_blank"
+            >
+                {resource.downloadLabel || "Download"}
+                <DownloadIcon class="inline [alignment-baseline:alphabetic;] align-baseline h-4.5 ml-1 w-auto fill-neutral-950! group-hover:fill-neutral-700!" />
+            </a>
         )
     }
 </article>

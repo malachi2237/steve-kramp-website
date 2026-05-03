@@ -4,15 +4,11 @@ import overpass400 from "@fontsource/overpass/files/overpass-latin-400-normal.wo
 import { getResources, toDisplayResources } from "../lib/sonicjs";
 import PageLayout from "../layouts/pagelayout.astro";
 import PageSection from "../components/generic/pagesection.astro";
-import Multicard from "../components/generic/multicard.astro";
-import Resourcecard from "../components/resourcecard.astro";
+import ResourceCard from "../components/resourcecard.astro";
 
-const rawResources = await getResources()
-console.log(rawResources)
-const resources = toDisplayResources(rawResources)
+const rawResources = await getResources();
+const resources = toDisplayResources(rawResources);
 // /files/uploads/
-/* export const prerender = false; */
-
 ---
 
 <PageLayout title="Resources">
@@ -33,13 +29,11 @@ const resources = toDisplayResources(rawResources)
         />
     </Fragment>
     <PageSection>
-        <h1 class="text-center font-serif uppercase  text-neutral-950 text-5xl">Resources</h1>
-        <Multicard elementMinSize="24rem">
-            {
-                resources.map((resource) => (
-                    <Resourcecard resource={resource}/>
-                ))
-            }
+        <h1 class="text-center font-serif uppercase text-neutral-950 text-5xl">
+            Resources
+        </h1>
+        <div>
+            {resources.map((resource) => <ResourceCard resource={resource} />)}
         </div>
     </PageSection>
 </PageLayout>
