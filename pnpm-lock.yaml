@@ -32,6 +32,9 @@ importers:
       preact:
         specifier: ^10.26.9
         version: 10.29.1
+      sharp:
+        specifier: ^0.34.5
+        version: 0.34.5
       tailwindcss:
         specifier: ^4.1.7
         version: 4.2.4
