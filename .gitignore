@@ -26,3 +26,6 @@ pnpm-debug.log*
 .idea/
 
 *.code-workspace
+
+#Wrangler cache
+.wrangler
